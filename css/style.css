@@ -1,0 +1,131 @@
+/* Машинска школа Преоце – основни стилови (остало је у самим страницама) */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #ECEEF1; }
+img { max-width: 100%; }
+a { color: #15181E; transition: color .15s ease, background-color .15s ease, opacity .15s ease, filter .15s ease; }
+a:hover { color: #B93A0A; }
+a[style*="background: #F5B800"]:hover { filter: brightness(1.08); color: #15181E; }
+a[style*="background: #15181E"]:hover, a[style*="background: #1F3A68"]:hover, button[type="submit"]:hover { filter: brightness(1.35); color: #fff; }
+header a:not([style*="background"]):hover { color: #F5B800 !important; }
+footer a:hover { color: #F5B800 !important; }
+a img { transition: filter .2s ease; }
+a:hover img { filter: saturate(1.1) brightness(1.05); }
+:focus-visible { outline: 3px solid #F5B800; outline-offset: 3px; }
+input:focus, textarea:focus { outline: 2px solid #1F3A68; outline-offset: 1px; }
+html, body { overflow-x: hidden; }
+iframe { max-width: 100%; }
+
+/* Дугме за мени – видљиво само на мањим екранима */
+.meni-dugme { display: none; }
+
+/* ===== Таблет и телефон ===== */
+@media (max-width: 900px) {
+  header > div { flex-wrap: nowrap !important; position: relative; }
+  .meni-dugme {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 48px; height: 48px; padding: 12px; margin-left: auto; flex: 0 0 48px;
+    background: transparent; border: 1.5px solid rgba(255,255,255,.35); cursor: pointer;
+  }
+  .meni-dugme span { display: block; height: 2px; background: #FFFFFF; transition: transform .2s ease, opacity .2s ease; }
+  .meni-dugme[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .meni-dugme[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .meni-dugme[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  #glavni-meni {
+    display: none !important;
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 50;
+    flex-direction: column; align-items: stretch !important; gap: 0 !important;
+    background: #15181E; padding: 8px 16px 20px; border-top: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 12px 24px rgba(0,0,0,.35);
+  }
+  #glavni-meni.otvoren { display: flex !important; }
+  #glavni-meni a {
+    padding: 14px 8px !important; font-size: 16px !important;
+    border-bottom: 1px solid rgba(255,255,255,.1) !important;
+  }
+  #glavni-meni a[aria-current="page"] { border-left: 3px solid #F5B800 !important; padding-left: 12px !important; }
+  #glavni-meni a[style*="background: #F5B800"] {
+    margin: 14px 0 0 !important; justify-content: center; border-bottom: 0 !important;
+  }
+
+  h1 { font-size: 56px !important; }
+  h2[style*="font-size: 46px"] { font-size: 38px !important; }
+}
+
+/* ===== Телефон ===== */
+@media (max-width: 640px) {
+  body > div { font-size: 16px !important; }
+
+  /* Заглавље */
+  header > div { padding: 10px 16px !important; gap: 12px !important; }
+  header img { width: 52px !important; height: 40px !important; }
+  header a > span > span:first-child { font-size: 18px !important; }
+  header a > span > span:last-child { font-size: 10px !important; letter-spacing: .05em !important; }
+
+  /* Наслови */
+  h1 { font-size: 40px !important; line-height: 1.05 !important; overflow-wrap: break-word; hyphens: auto; }
+  h2 { font-size: 28px !important; line-height: 1.15 !important; overflow-wrap: break-word; hyphens: auto; }
+  h3[style*="font-size: 24px"], h3[style*="font-size: 22px"] { font-size: 20px !important; }
+  p[style*="font-size: 19px"] { font-size: 17px !important; }
+
+  /* Размаци у секцијама */
+  [style*="max-width: 1240px"] { padding-left: 16px !important; padding-right: 16px !important; }
+  [style*="padding: 72px 24px 40px"] { padding-top: 40px !important; padding-bottom: 32px !important; }
+  [style*="padding: 64px 24px 56px"] { padding-top: 40px !important; padding-bottom: 36px !important; }
+  [style*="padding: 80px 24px"], [style*="padding: 72px 24px"] { padding-top: 48px !important; padding-bottom: 48px !important; }
+  [style*="padding: 96px 24px 64px"] { padding-top: 48px !important; padding-bottom: 40px !important; }
+  [style*="padding: 0 24px 96px"] { padding-bottom: 56px !important; }
+  [style*="padding: 40px 24px 80px"] { padding-top: 24px !important; padding-bottom: 48px !important; }
+  [style*="padding: 48px 0"] { padding: 32px 0 !important; }
+  [style*="padding: 44px 40px"] { padding: 32px 20px !important; }
+  [style*="padding: 64px 24px 32px"] { padding-top: 44px !important; gap: 28px !important; }
+  [style*="gap: 48px"] { gap: 28px !important; }
+  [style*="margin-top: 56px"] { margin-top: 36px !important; }
+  [style*="margin-bottom: 36px"] { margin-bottom: 24px !important; }
+
+  /* Велики бројеви (статистика) */
+  strong[style*="font-size: 52px"] { font-size: 40px !important; }
+  [style*="flex: 1 1 200px; padding: 22px"] { flex-basis: 40% !important; padding: 16px 12px 16px 14px !important; }
+
+  /* Дугмад преко целе ширине */
+  a[style*="min-height: 52px"] { width: 100%; justify-content: center; text-align: center; }
+  span[style="position: relative"] { width: 100%; }
+
+  /* Слике фиксне висине */
+  img[style*="height: 420px"] { height: 240px !important; }
+  img[style*="height: 340px"] { height: 220px !important; }
+  img[style*="height: 260px"] { height: 220px !important; }
+  img[style*="height: 200px"] { height: 180px !important; }
+  iframe[style*="height: 360px"] { height: 280px !important; }
+
+  /* Мреже – без преливања ван екрана */
+  [style*="minmax(300px, 1fr)"] { grid-template-columns: 1fr !important; gap: 16px !important; }
+  [style*="minmax(210px, 1fr)"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  [style*="minmax(210px, 1fr)"] h3 { font-size: 16px !important; }
+  [style*="minmax(210px, 1fr)"] span[style*="width: 84px"] { width: 64px !important; height: 64px !important; font-size: 24px !important; }
+
+  /* Временска линија и листе */
+  span[style*="flex: 0 0 96px"] { flex-basis: 100% !important; font-size: 22px !important; }
+  span[style*="flex: 0 0 56px; width: 56px"] { flex-basis: 48px !important; width: 48px !important; height: 48px !important; font-size: 22px !important; }
+  strong[style*="font-size: 40px"] { font-size: 32px !important; }
+  li[style*="padding: 22px 0"] > a[download] { flex: 1 1 auto; justify-content: center; }
+
+  /* Подножје */
+  footer [style*="font-size: 28px"] { font-size: 24px !important; }
+  footer nav a, footer a[href^="tel"], footer a[href^="mailto"] { padding: 4px 0; }
+
+  /* Ознаке изнад наслова */
+  span[style*="font-size: 13px; letter-spacing: 0.08em"] { font-size: 12px !important; }
+
+  /* Преглед докумената */
+  #doc-view .docx-wrapper { padding: 12px 0 !important; }
+}
+
+/* ===== Врло уски телефони ===== */
+@media (max-width: 380px) {
+  h1 { font-size: 34px !important; }
+  h2 { font-size: 25px !important; }
+  [style*="minmax(210px, 1fr)"] { grid-template-columns: 1fr !important; }
+  header a > span > span:last-child { display: none; }
+}
